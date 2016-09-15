@@ -7,15 +7,19 @@
     <button type="button" onClick="changeurl()">Change</button>
     <button type="button" onClick="backurl()">Back</button>
     <script>
-        window.history.state = [];
-        console.log(window.history);
-        console.log(history.state);
+        console.log(window.location);
         var changeurl = function(){
-            history.pushState({},null, "foo.html");
+            history.pushState({},null, "test.png");
+            console.log("Open Image");
         }
     
         var backurl = function(){
             window.history.back();
+            console.log("Close Image");
+        }
+    
+        var reload = function(){
+            window.location.reload();
         }
     </script>
 </body>
