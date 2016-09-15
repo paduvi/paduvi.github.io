@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello</title>
+</head>
+<body>
+    <button type="button" onClick="changeurl()">Change</button>
+    <button type="button" onClick="backurl()">Back</button>
+    <script>
+        window.history.state = [];
+        console.log(window.history);
+        console.log(history.state);
+        var changeurl = function(){
+            history.pushState({},null, "foo.html");
+        }
+    
+        var backurl = function(){
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
