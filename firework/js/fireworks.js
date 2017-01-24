@@ -209,7 +209,7 @@ var Fireworks = (function () {
             new Particle(
                 // position
                 {
-                    x: pos.x || viewportWidth * 0.5,
+                    x: pos.x || viewportWidth * (Math.random() * 0.5 + 0.25),
                     y: pos.y || viewportHeight + 10
                 },
 
@@ -363,7 +363,7 @@ Particle.prototype = {
  */
 var Library = {
     bigGlow: document.getElementById('big-glow'),
-    smallGlow: document.getElementById('small-glow')
+    smallGlow: document.getElementById('small-glow'),
 };
 
 /**
