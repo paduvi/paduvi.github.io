@@ -51,8 +51,7 @@ var Fireworks = (function () {
 
         // start by measuring the viewport
         onWindowResize();
-        // set the dimensions on the canvas
-        setMainCanvasDimensions();
+        window.onresize = onWindowResize;
 
         // add the canvas in
         document.body.appendChild(mainCanvas);
@@ -238,6 +237,8 @@ var Fireworks = (function () {
     function onWindowResize() {
         viewportWidth = window.innerWidth;
         viewportHeight = window.innerHeight;
+        // set the dimensions on the canvas
+        setMainCanvasDimensions();
     }
 
     // declare an API
