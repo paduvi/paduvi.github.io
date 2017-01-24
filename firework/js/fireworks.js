@@ -215,7 +215,7 @@ var Fireworks = (function () {
 
                 // target
                 {
-                    y: target.y || 150 + Math.random() * 100
+                    y: target.y || Math.floor(Math.random() * 100) + viewportHeight / 2 - 100
                 },
 
                 // velocity
