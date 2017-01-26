@@ -30,7 +30,8 @@ var Fireworks = (function () {
         // this will time the auto launches of fireworks, one launch per 80 loop ticks
         timerTotal = 60,
         timerTick = 0,
-        mousedown = false;
+        mousedown = false,
+        clicked = false;
 
     /**
      * Create DOM elements and get your game on
@@ -61,6 +62,7 @@ var Fireworks = (function () {
             mainCanvas.addEventListener(ev, function (e) {
                 e.preventDefault();
                 mousedown = true;
+                clicked = true;
             });
         });
 
@@ -84,7 +86,8 @@ var Fireworks = (function () {
         if (timerTick >= timerTotal) {
             if (!mousedown) {
                 // start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-                createParticle();
+                if (clicked)
+                    createParticle();
                 timerTick = 0;
                 timerTotal = Math.floor(Math.random() * (60 - 30 + 1)) + 30
             }
@@ -113,6 +116,7 @@ var Fireworks = (function () {
         var size = gridSize * 10;
         fireworkCanvas.width = size;
         fireworkCanvas.height = size;
+        fireworkContext.save();
         fireworkContext.globalCompositeOperation = 'source-over';
 
         // create 100 blocks which cycle through
@@ -130,6 +134,7 @@ var Fireworks = (function () {
                 gridX,
                 gridY);
         }
+        fireworkContext.restore();
     }
 
     /**
