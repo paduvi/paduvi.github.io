@@ -14,10 +14,16 @@
  * limitations under the License.
  */
 
+// get a random number within a range
+function random(min, max) {
+    return Math.random() * ( max - min ) + min;
+}
+
 var Fireworks = (function () {
 
     // declare the variables we need
     var particles = [],
+        targets = [],
         mainCanvas = null,
         mainContext = null,
         fireworkCanvas = null,
@@ -31,7 +37,12 @@ var Fireworks = (function () {
         timerTotal = 60,
         timerTick = 0,
         mousedown = false,
-        clicked = false;
+        clicked = false,
+        hue = 120,
+        // mouse x coordinate,
+        mx,
+        // mouse y coordinate
+        my;
 
     /**
      * Create DOM elements and get your game on
@@ -57,6 +68,15 @@ var Fireworks = (function () {
         // add the canvas in
         document.body.appendChild(mainCanvas);
 
+        // mouse event bindings
+        // update the mouse coordinates on mousemove
+        ['mousemove', 'touchmove'].forEach(function (ev) {
+            mainCanvas.addEventListener(ev, function (e) {
+                mx = e.pageX - mainCanvas.offsetLeft;
+                my = e.pageY - mainCanvas.offsetTop;
+            });
+        });
+
         // toggle mousedown state and prevent canvas from being selected
         ['mousedown', 'touchstart'].forEach(function (ev) {
             mainCanvas.addEventListener(ev, function (e) {
@@ -78,6 +98,16 @@ var Fireworks = (function () {
     }
 
     /**
+     * Create a new circle target
+     */
+    function createCircleTarget() {
+        targets.push(new Target({
+            x: mx,
+            y: my
+        }));
+    }
+
+    /**
      * Pass through function to create a
      * new firework on touch / click
      */
@@ -89,7 +119,7 @@ var Fireworks = (function () {
                 if (clicked)
                     createParticle();
                 timerTick = 0;
-                timerTotal = Math.floor(Math.random() * (60 - 30 + 1)) + 30
+                timerTotal = Math.round(random(30, 60))
             }
         } else {
             timerTick++;
@@ -100,6 +130,7 @@ var Fireworks = (function () {
             if (mousedown) {
                 // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
                 createParticle();
+                createCircleTarget();
                 limiterTick = 0;
             }
         } else {
@@ -153,6 +184,7 @@ var Fireworks = (function () {
         clearContext();
         createFirework();
         requestAnimFrame(update);
+        drawCircleTargets();
         drawFireworks();
     }
 
@@ -163,6 +195,23 @@ var Fireworks = (function () {
     function clearContext() {
         mainContext.fillStyle = "rgba(0,0,0,0.2)";
         mainContext.fillRect(0, 0, viewportWidth, viewportHeight);
+    }
+
+    /**
+     * Draw circle targets
+     */
+    function drawCircleTargets() {
+        hue += 0.5;
+        var a = targets.length;
+
+        while (a--) {
+            var circle = targets[a];
+
+            if (circle.update()) {
+                targets.splice(a, 1);
+            }
+            circle.render(mainContext, hue);
+        }
     }
 
     /**
@@ -220,7 +269,7 @@ var Fireworks = (function () {
 
                 // target
                 {
-                    y: target.y || Math.floor(Math.random() * 100) + viewportHeight / 2 - 100
+                    y: target.y || random(viewportHeight / 2 - 100, viewportHeight / 2)
                 },
 
                 // velocity
@@ -253,6 +302,42 @@ var Fireworks = (function () {
     };
 
 })();
+
+var Target = function (pos) {
+    this.brightness = random(50, 70);
+    this.pos = {
+        x: pos.x,
+        y: pos.y
+    }
+    this.targetRadius = 1;
+    this.count = 0;
+}
+
+Target.prototype = {
+    update: function () {
+        // cycle the circle target indicator radius
+        if (this.targetRadius < 8) {
+            this.targetRadius += 0.3;
+            return false;
+        }
+        if (this.count < 2) {
+            this.count++;
+            this.targetRadius = 1;
+            return false;
+        }
+        return true;
+    },
+
+    render: function (ctx, hue) {
+        ctx.save();
+        ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+        ctx.beginPath();
+        // draw the target for this firework with a pulsing circle
+        ctx.arc(this.pos.x, this.pos.y, this.targetRadius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+    }
+}
 
 /**
  * Represents a single point, so the firework being fired up
