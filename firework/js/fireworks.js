@@ -309,20 +309,20 @@ var Target = function (pos) {
         x: pos.x,
         y: pos.y
     }
-    this.targetRadius = 1;
+    this.targetRadius = 2;
     this.count = 0;
 }
 
 Target.prototype = {
     update: function () {
         // cycle the circle target indicator radius
-        if (this.targetRadius < 8) {
+        if (this.targetRadius < 10) {
             this.targetRadius += 0.3;
             return false;
         }
         if (this.count < 2) {
             this.count++;
-            this.targetRadius = 1;
+            this.targetRadius = 2;
             return false;
         }
         return true;
