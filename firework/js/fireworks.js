@@ -87,7 +87,6 @@ var Fireworks = (function () {
             mainCanvas.addEventListener(ev, function (e) {
                 e.preventDefault();
                 if (e.touches) {
-                    console.log(e);
                     mx = e.touches[0].pageX - mainCanvas.offsetLeft;
                     my = e.touches[0].pageY - mainCanvas.offsetTop;
                 } else {
