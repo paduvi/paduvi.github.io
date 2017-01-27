@@ -35,7 +35,7 @@ var Fireworks = (function () {
         limiterTick = 0,
         // this will time the auto launches of fireworks, one launch per 80 loop ticks
         timerTotal = 60,
-        timerTick = 0,
+        timerTick = 60,
         mousedown = false,
         clicked = false,
         hue = 120,
@@ -72,8 +72,13 @@ var Fireworks = (function () {
         // update the mouse coordinates on mousemove
         ['mousemove', 'touchmove'].forEach(function (ev) {
             mainCanvas.addEventListener(ev, function (e) {
-                mx = e.pageX - mainCanvas.offsetLeft;
-                my = e.pageY - mainCanvas.offsetTop;
+                if (e.targetTouches) {
+                    mx = e.targetTouches[0].pageX - mainCanvas.offsetLeft;
+                    my = e.targetTouches[0].pageY - mainCanvas.offsetTop;
+                } else {
+                    mx = e.pageX - mainCanvas.offsetLeft;
+                    my = e.pageY - mainCanvas.offsetTop;
+                }
             });
         });
 
@@ -81,6 +86,14 @@ var Fireworks = (function () {
         ['mousedown', 'touchstart'].forEach(function (ev) {
             mainCanvas.addEventListener(ev, function (e) {
                 e.preventDefault();
+                if (e.touches) {
+                    console.log(e);
+                    mx = e.touches[0].pageX - mainCanvas.offsetLeft;
+                    my = e.touches[0].pageY - mainCanvas.offsetTop;
+                } else {
+                    mx = e.pageX - mainCanvas.offsetLeft;
+                    my = e.pageY - mainCanvas.offsetTop;
+                }
                 mousedown = true;
                 clicked = true;
             });
