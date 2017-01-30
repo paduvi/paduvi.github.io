@@ -87,6 +87,7 @@ var Fireworks = (function () {
             mainCanvas.addEventListener(ev, function (e) {
                 e.preventDefault();
                 if (e.touches) {
+                    console.log(e);
                     mx = e.touches[0].pageX - mainCanvas.offsetLeft;
                     my = e.touches[0].pageY - mainCanvas.offsetTop;
                 } else {
@@ -247,11 +248,14 @@ var Fireworks = (function () {
                 // if the firework isn't using physics
                 // then we know we can safely(!) explode it... yeah.
                 if (!firework.usePhysics) {
+                    var chance = Math.random()
 
-                    if (Math.random() < 0.5) {
+                    if (chance < 0.5) {
                         FireworkExplosions.star(firework);
-                    } else {
+                    } else if (chance < 0.8) {
                         FireworkExplosions.circle(firework);
+                    } else {
+                        FireworkExplosions.heart(firework);
                     }
                 }
             }
@@ -493,6 +497,34 @@ var FireworkExplosions = {
                 {
                     x: Math.cos(particleAngle) * randomVelocity,
                     y: Math.sin(particleAngle) * randomVelocity
+                },
+                firework.color,
+                true);
+        }
+    },
+
+    heart: function (firework) {
+        var count = 100;
+        var angle = (Math.PI * 2) / count;
+        var radius = random(20, 45);
+
+        while (count--) {
+
+            var randomVelocity = 1.5 + Math.random() * 2.5;
+            var particleAngle = count * angle;
+
+            var r = (Math.sin(particleAngle) * Math.sqrt(Math.abs(Math.cos(particleAngle))))
+                / (Math.sin(particleAngle) + 1.4) - 2 * Math.sin(particleAngle) + 2;
+
+            Fireworks.createParticle(
+                {
+                    x: r * radius * Math.cos(particleAngle) + firework.pos.x,
+                    y: -r * radius * Math.sin(particleAngle) + firework.pos.y
+                },
+                null,
+                {
+                    x: r * Math.cos(particleAngle) * randomVelocity,
+                    y: -r * Math.sin(particleAngle) * randomVelocity
                 },
                 firework.color,
                 true);
