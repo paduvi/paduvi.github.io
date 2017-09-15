@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Tutorial</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const data = [{
+        id: 1,
+        name: "BPhone",
+        price: 299,
+        qty: 0
+    }, {
+        id: 2,
+        name: "iPhone 6",
+        price: 399,
+        qty: 0
+    }, {
+        id: 3,
+        name: "SamSung Galaxy Note 7",
+        qty: 0
+    }]
+
+    var Product = React.createClass({
+        getDefaultProps: function () {
+            return {
+                price: 0
+            }
+        },
+
+        buy: function () {
+            this.props.handleBuy(this.props.id);
+        },
+
+        shouldComponentUpdate: function() {
+            return false;
+        },
+
+        render: function () {
+            return (
+              <div className="col s12 m4">
+                  <div className="card blue-grey darken-1">
+                      <div className="card-content white-text">
+                          <span className="card-title">{this.props.name}</span>
+                          <p>${this.props.price}</p>
+                      </div>
+                      <div className="card-action">
+                          <a className="waves-effect waves-teal btn pulse"
+                              style={{padding: '0 10px'}}
+                              onClick={this.buy}>
+                              <i className="material-icons right" style={{marginLeft: 5}}>shopping_cart</i>Add
+                          </a>
+                      </div>
+                  </div>
+              </div>
+            )
+        }
+    });
+
+    var ProductList = React.createClass({
+        render: function () {
+            return (
+                <div className="row">
+                    {this.props.products.map(function(item){
+                        return (
+                            <Product key={item.id} name={item.name}
+                                price={item.price} id={item.id}
+                                handleBuy={this.props.handleBuy}/>
+                        )
+                    }.bind(this))}
+                </div>
+            )
+        }
+    });
+
+    var CartItem = React.createClass({
+        getDefaultProps: function () {
+            return {
+                price: 0
+            }
+        },
+        shouldComponentUpdate: function(nextProps) {
+            if (nextProps.qty != this.props.qty) {
+                return true;
+            }
+            return false;
+        },
+        remove: function () {
+            this.props.handleRemove(this.props.id);
+        },
+        render: function () {
+            return (
+                    <tr>
+                        <td>{this.props.name}</td>
+                        <td>${this.props.price}</td>
+                        <td>{this.props.qty}</td>
+                        <td>${this.props.price * this.props.qty}</td>
+                        <td>
+                            <a className="btn btn-floating waves-effect waves-light red" onClick={this.remove}><i className="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+            )
+        }
+    })
+
+    var Cart = React.createClass({
+        renderRows: function () {
+            var rows = this.props.items.filter(function(item) {
+              return item.qty != 0;
+            });
+
+            if (rows.length == 0) {
+              return (
+                  <tr>
+                      <td colSpan="5" className="center">
+                          <label>Nothing in cart</label>
+                      </td>
+                  </tr>
+              )
+            }
+
+            return rows.map(function (item) {
+                return <CartItem key={item.id} id={item.id}
+                                name={item.name} price={item.price} qty={item.qty}
+                                handleRemove={this.props.handleRemove}/>
+            }.bind(this));
+        },
+        render: function () {
+            const total = this.props.items.reduce(function (result, item) {
+                return result + (item.price || 0) * item.qty;
+            }, 0);
+
+            return (
+                <div className="row">
+                    <h2 className="col s12">Cart</h2>
+                    <table className="col s12 responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderRows()}
+                            <tr>
+                                <td><label>Total:</label></td>
+                                <td colSpan="2"></td>
+                                <td><b>${total}</b></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
+    });
+
+    var App = React.createClass({
+        getInitialState: function () {
+            return {
+                cartItems: data
+            }
+        },
+
+        addToCart: function (id){
+            const cartItems = this.state.cartItems.map(function(item){
+                return Object.assign({}, item, {qty: item.id == id ? item.qty + 1 : item.qty});
+            });
+
+            this.setState({cartItems});
+        },
+
+        removeFromCart: function (id) {
+            const cartItems = this.state.cartItems.map(function(item){
+                return Object.assign({}, item, {qty: item.id == id ? 0 : item.qty});
+            });
+            this.setState({cartItems});
+        },
+
+        render: function () {
+            return (
+                <div class="container">
+                    <ProductList products={this.state.cartItems} handleBuy={this.addToCart}/>
+                    <Cart items={this.state.cartItems} handleRemove={this.removeFromCart}/>
+                </div>
+            )
+        }
+    })
+
+    ReactDOM.render(<App/>, document.getElementById('root'));
+
+</script>
+</body>
+</html>
