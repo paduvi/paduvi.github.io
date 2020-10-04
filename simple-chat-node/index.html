@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat system</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="bootstrap/animate.css">
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Hệ thống chat
+            <small></small>
+        </h1>
+    </section>
+    <section class="content">
+        <section class="container box box-info">
+            <div class="row">
+                <div class="col-xs-12 no-padding">
+                    <div id="chat-wrapper" class="tab-content chat-wrapper" style="display: block;">
+                        <div id="home" class="tab-pane fade in active  row">
+                            <div class="col-xs-12">
+                                <header class="header-chat">
+                                    <div class="default-nav">
+                                        <ul class="chat-menu">
+                                            <li class="menu-back pull-right">
+                                                <i class=" info-toggle fa fa-2x "></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="col-xs-12 chat-wrapper-main">
+                                <div class="chat-container">
+                                    <div class=" inner chat-content">
+                                        <div class="content message-form">
+                                            <div class="message-wrapper adminMessage">
+                                                <div class="circle-wrapper animated bounceIn"><img
+                                                        class="responsive-img"
+                                                        src="assets/img/person.png">
+                                                </div>
+                                                <div class="text-wrapper animated fadeIn">thế thì chịu nhé</div>
+                                            </div>
+                                            <div class="message-wrapper userMessage">
+                                                <div class="circle-wrapper animated bounceIn"><img
+                                                        class="responsive-img"
+                                                        src="assets/img/psyduck.png">
+                                                </div>
+                                                <div class="text-wrapper animated fadeIn">ờm</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class=" input-form chat-bottom">
+                                            <textarea class="userMessage"
+                                                      placeholder="Bạn cần hỗ trợ? Gửi ngay cho chúng tôi"></textarea>
+                                    </div>
+                                    <div class=" chat-info">
+                                        <div class="chat-info-name">
+                                            <h2>Client 1</h2>
+                                        </div>
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Client 1</h4>
+                                                    <p>ID: 1</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Client 2</h4>
+                                                    <p>ID: 2</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Client 3</h4>
+                                                    <p>ID: 3</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+<script>
+    $(".info-toggle").click(function (e) {
+        e.preventDefault();
+        console.log(this);
+        $(".info-toggle").parents('.tab-pane').toggleClass("toggled");
+    });
+</script>
+</body>
+</html>
