@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineer Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px 50px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+        h3 {
+            color: #444;
+            text-align: left;
+            margin-top: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .section {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .section h3 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            line-height: 1.6;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-icons a {
+            font-size: 20px;
+            color: #555;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #0078d7;
+        }
+        #experience .company-block {
+            margin-top: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        #experience .company-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        #experience .job-description {
+            margin-top: 5px;
+            position: relative;
+        }
+        #experience .job-headline {
+            font-style: italic;
+            display: flex;
+            justify-content: space-between;
+        }
+        #experience strong {
+            text-transform: uppercase;
+        }
+        #experience .job-title {
+            color: #222;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .duration {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        #projects .project-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        #projects .project-block a {
+            font-weight: bold;
+            color: #0078d7;
+            text-decoration: none;
+        }
+        #projects .project-block a:hover {
+            text-decoration: underline;
+        }
+        .section introduction{
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.7;
+        }
+        .education-block {
+            position: relative;
+        }
+        .education-headline {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .education-headline strong {
+            text-transform: uppercase;
+        }
+        .education-headline .degree-title {
+            color: #222;
+            display: inline-block;
+            margin-right: 10px;
+            font-style: italic;
+        }
+        .location {
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                color: #000;
+                font-size: 12pt;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .social-icons {
+                /* display: none; */  /* Keep social icons in print view */
+            }
+            .section h3 {
+                border-bottom: 2px solid #000;
+            }
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+            #experience .company-block {
+                border-left: none;
+                padding-left: 0;
+            }
+            #projects .project-block {
+                background-color: transparent;
+                padding: 0;
+                box-shadow: none;
+            }
+            .location {
+                font-style: italic;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const resumeData = {
+                "name": "John Doe",
+                "title": "Software Engineer",
+                "contact": {
+                    "email": "johndoe@example.com",
+                    "linkedin": "https://linkedin.com/in/johndoe",
+                    "github": "https://github.com/johndoe",
+                    "city": "Hanoi",
+                    "country": "Vietnam"
+                },
+                "introduction": "Highly skilled and innovative Software Engineer with a proven track record of designing, developing, and implementing cutting-edge solutions in embedded systems and robotics. Passionate about leveraging technology to solve complex challenges and drive impactful results.",
+                "education": [
+                    {
+                        "degree": "Bachelor of Science in Computer Engineering",
+                        "institution": "University of Technology",
+                        "location": "Hanoi, Vietnam",
+                        "duration": "2015 - 2019",
+                        "description": "Gained expertise in embedded systems, software development, and hardware design."
+                    }
+                ],
+                // "educationIntroduction": "My education has provided me with a strong foundation in computer engineering, with a focus on embedded systems, software development, and hardware design. I am eager to apply my knowledge and skills to real-world challenges.",
+                "skills": [
+                    "Programming: C, C++, Python, Java",
+                    "Embedded Systems, IoT, Microcontrollers",
+                    "Robotics, Computer Vision",
+                    "Linux, Shell Scripting, Git"
+                ],
+                // "skillsIntroduction": "I possess a diverse set of technical skills, including proficiency in multiple programming languages, embedded systems development, and robotics. I am also adept at utilizing various tools and technologies to enhance efficiency and productivity.",
+                "experience": {
+                    "XYZ Technologies": [
+                        {
+                            "title": "Software Engineer",
+                            "location": "Hanoi, Vietnam",
+                            "duration": "2022 - Present",
+                            "responsibilities": [
+                                "Developed firmware for embedded systems in industrial automation.",
+                                "Implemented real-time control algorithms in C/C++.",
+                                "Worked on IoT integrations with cloud platforms."
+                            ]
+                        },
+                        {
+                            "title": "Junior Engineer",
+                            "location": "Ho Chi Minh City, Vietnam",
+                            "duration": "2020 - 2022",
+                            "responsibilities": [
+                                "Assisted in debugging and testing embedded firmware.",
+                                "Developed Python scripts for automated testing."
+                            ]
+                        }
+                    ],
+                    "ABC Robotics": [
+                        {
+                            "title": "Intern",
+                            "location": "Da Nang, Vietnam",
+                            "duration": "2019 - 2020",
+                            "responsibilities": [
+                                "Designed robotic vision modules using OpenCV.",
+                                "Optimized embedded code for performance and efficiency."
+                            ]
+                        }
+                    ]
+                },
+                // "experienceIntroduction": "My professional experience includes designing, developing, and implementing software solutions for embedded systems and robotics applications. I have a proven track record of delivering high-quality results and contributing to team success.",
+                "projects": [
+                    {
+                        "name": "Smart Home System",
+                        "link": "https://github.com/johndoe/smart-home",
+                        "description": "A home automation project leveraging IoT technologies."
+                    },
+                    {
+                        "name": "Autonomous Drone Navigation",
+                        "link": "https://github.com/johndoe/drone-navigation",
+                        "description": "Designed an AI-based navigation system for drones."
+                    }
+                ],
+                // "projectsIntroduction": "My projects demonstrate my ability to apply my skills and knowledge to create innovative and impactful solutions. I am passionate about leveraging technology to solve real-world problems and drive positive change.",
+            };
+
+            document.getElementById("name").innerText = resumeData.name;
+            document.getElementById("title").innerText = resumeData.title + " | " + resumeData.contact.city + ", " + resumeData.contact.country;
+            document.getElementById("email").href = `mailto:${resumeData.contact.email}`;
+            document.getElementById("linkedin").href = resumeData.contact.linkedin;
+            document.getElementById("github").href = resumeData.contact.github;
+
+            const introductionSection = document.getElementById("introduction");
+            if (resumeData.introduction) {
+                introductionSection.innerHTML = `<p>${resumeData.introduction}</p>`;
+            } else {
+                introductionSection.style.display = "none";
+            }
+
+            const educationSection = document.getElementById("education");
+            if (resumeData.educationIntroduction) {
+                const eduIntroDiv = document.createElement("div");
+                eduIntroDiv.className = "introduction";
+                eduIntroDiv.innerHTML = `<p>${resumeData.educationIntroduction}</p>`;
+                educationSection.parentElement.insertBefore(eduIntroDiv, educationSection);
+            }
+            if (resumeData.education) {
+                resumeData.education.forEach(edu => {
+                    const eduBlock = document.createElement("div");
+                    eduBlock.className = 'education-block';
+                    eduBlock.innerHTML = `<div class="education-headline"><strong>${edu.institution}</strong><span class="location">${edu.location}</span></div><div class="education-headline"><span class="degree-title">${edu.degree}</span><span class="duration">${edu.duration}<span></div><p>${edu.description}</p>`;
+                    educationSection.appendChild(eduBlock);
+                });
+            }
+
+            const skillsSection = document.getElementById("skills");
+            if (resumeData.skillsIntroduction) {
+                const skillsIntroDiv = document.createElement("div");
+                skillsIntroDiv.className = "introduction";
+                skillsIntroDiv.innerHTML = `<p>${resumeData.skillsIntroduction}</p>`;
+                skillsSection.parentElement.insertBefore(skillsIntroDiv, skillsSection);
+            }
+            if (resumeData.skills) {
+                skillsSection.innerHTML = ''; // Clear the existing content
+                resumeData.skills.forEach(skill => {
+                    const skillItem = document.createElement("p");
+                    skillItem.style.marginBottom = '10px';
+                    const parts = skill.split(':');
+                    if (parts.length === 2) {
+                        skillItem.innerHTML = `<strong>${parts[0].trim()}:</strong> ${parts[1].trim()}`;
+                    } else {
+                        skillItem.textContent = skill;
+                    }
+
+                    skillsSection.appendChild(skillItem);
+                });
+            }
+
+            const experienceSection = document.getElementById("experience");
+            if (resumeData.experienceIntroduction) {
+                const experienceIntroDiv = document.createElement("div");
+                experienceIntroDiv.className = "introduction";
+                experienceIntroDiv.innerHTML = `<p>${resumeData.experienceIntroduction}</p>`;
+                experienceSection.parentElement.insertBefore(experienceIntroDiv, experienceSection);
+            }
+            if (resumeData.experience) {
+                Object.keys(resumeData.experience).forEach(company => {
+                    const companyBlock = document.createElement("div");
+                    companyBlock.className = "company-block";
+                    companyBlock.innerHTML = `<div class="company-name"><strong>${company}</strong><span class="location">${resumeData.experience[company][0].location}</span></div>`;
+                    resumeData.experience[company].forEach(job => {
+                        const jobBlock = document.createElement("div");
+                        jobBlock.className = "job-description";
+                        jobBlock.innerHTML = `<div class="job-headline"><span class="job-title">${job.title}</span><span class="duration">${job.duration}</span></div><ul>${job.responsibilities.map(res => `<li>${res}</li>`).join('')}</ul>`;
+                        companyBlock.appendChild(jobBlock);
+                    });
+                    experienceSection.appendChild(companyBlock);
+                });
+            }
+
+            const projectsSection = document.getElementById("projects");
+            if (resumeData.projectsIntroduction) {
+                const projectsIntroDiv = document.createElement("div");
+                projectsIntroDiv.className = "introduction";
+                projectsIntroDiv.innerHTML = `<p>${resumeData.projectsIntroduction}</p>`;
+                projectsSection.parentElement.insertBefore(projectsSection, projectsSection);
+            }
+            if (resumeData.projects) {
+                resumeData.projects.forEach(project => {
+                    const projBlock = document.createElement("div");
+                    projBlock.className = "project-block";
+                    projBlock.innerHTML = `<strong><a href="${project.link}" target="_blank">${project.name}</a></strong><br><p>${project.description}</p>`;
+                    projectsSection.appendChild(projBlock);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 id="name"></h1>
+        <p id="title"></p>
+        <div class="social-icons">
+            <a id="email"><i class="fas fa-envelope"></i></a>
+            <a id="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a id="github" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </header>
+
+    <div class="section" id="introduction">
+        <h3>Introduction</h3>
+    </div>
+
+    <div class="section">
+        <h3>Education</h3>
+        <div id="education"></div>
+    </div>
+
+    <div class="section">
+        <h3>Experience</h3>
+        <div id="experience"></div>
+    </div>
+
+    <div class="section">
+        <h3>Projects</h3>
+        <div id="projects"></div>
+    </div>
+
+    <div class="section">
+        <h3>Additional</h3>
+        <div id="skills"></div>
+    </div>
+</div>
+</body>
+</html>
