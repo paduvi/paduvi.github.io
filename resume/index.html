@@ -114,7 +114,7 @@
         #projects .project-block a:hover {
             text-decoration: underline;
         }
-        .section introduction{
+        .section .introduction{
             margin-bottom: 20px;
             font-size: 1.1em;
             color: #666;
@@ -122,6 +122,7 @@
         }
         .education-block {
             position: relative;
+            margin-top: 15px;
         }
         .education-headline {
             display: flex;
@@ -191,17 +192,17 @@
                 "education": [
                     {
                         "degree": "Bachelor of Engineering in Computer Science",
-                        "institution": "<u>Hanoi University of Science and Technology</u>",
+                        "institution": "Hanoi University of Science and Technology",
                         "location": "Hanoi, Vietnam",
                         "duration": "2013 - 2018",
-                        "description": "<ul><li>Gained expertise in software engineering, information systems, and artificial intelligence, with application tracks in Software Technology, Information Systems, and Intelligent Data Analytics.</li><li>Graduation Thesis: Applying Deep Learning in building news recommendation system.</li></ul>"
+                        "description": "<ul><li>Graduation Thesis: Applying Deep Learning in building news recommendation system.</li></ul>"
                     },
                     {
                         "degree": "Specialized in Mathematics",
-                        "institution": "<u>Chu Van An High School for the Gifted</u>",
+                        "institution": "Chu Van An High School for the Gifted",
                         "location": "Hanoi, Vietnam",
                         "duration": "2010 - 2013",
-                        "description": "<ul><li>Advanced training in Mathematics.</li><li>Achievement: <b>1st Prize</b> in Hanoi City Mathematics Contest for Excellent Students.</li></ul>"
+                        "description": "<ul><li>Achievement: <b>1st Prize</b> in Hanoi City Mathematics Contest for Excellent Students.</li></ul>"
                     }
                 ],
                 //"educationIntroduction": "My education has provided me with a strong foundation in computer science and mathematics, with a focus on software engineering, information systems, artificial intelligence, and advanced problem-solving. I am eager to apply this knowledge and skill set to real-world challenges.",
@@ -214,40 +215,40 @@
                 ],
                 // "skillsIntroduction": "I possess a diverse set of technical skills, including proficiency in multiple programming languages, software development frameworks, and cloud platforms. My experience also includes databases, distributed systems, and data-driven applications.",
                 "experience": {
-                    "<u>KASIKORN Business-Technology Group [KBTG]</u>": [
+                    "KASIKORN Business-Technology Group [KBTG]": [
                         {
                             "title": "Software Engineer",
                             "location": "Vietnam - Remote",
                             "duration": "June 2023 - Present",
                             "responsibilities": [
-                                "Enhanced <b>Core Banking system</b> and developed <b>TPTeller</b> (Windows GUI) for branch tellers.",
+                                "Enhanced <b>Core Banking system</b> of KASIKORN Bank Vietnam and developed <b>TPTeller</b> (Windows GUI) for branch tellers.",
                                 "Integrated third-party systems (SWIFT, NAPAS, Cardzone CMS, FIS, Tyme) to deliver <b>secure and efficient financial solutions</b>.",
                                 "Optimized performance, achieving <b>P95 latency of 110ms</b> while handling <b>peak 400 TPS</b>, ensuring system stability and scalability.",
                                 "<b>Technical stack:</b> Java, Java Swing, Spring Framework, Javascript, Mumps, Profile GT.M, Oracle DB."
                             ]
                         }
                     ],
-                    "<u>One Mount Group</u>": [
+                    "One Mount Group": [
                         {
                             "title": "Backend Engineer",
                             "location": "Hanoi, Vietnam",
                             "duration": "Dec 2020 - May 2023",
                             "responsibilities": [
-                                "Maintained and developed the <b>Marketing Technology Platform</b> for VinID, VinShop, OneHousing.",
+                                "Scaled <b>Marketing Technology Platform</b> for VinID, VinShop, OneHousing, powering millions of users",
                                 "Designed and built <b>Dynamic Rule Engine</b> and <b>Customer Journey Builder</b>, powering personalized marketing.",
                                 "Achieved <b>P95 execution latency of 120ms</b>, capable of processing <b>20K requests/second</b>.",
                                 "<b>Technical stack:</b> Java, Golang, Spring Boot, Mysql, ElasticSearch, Redis, RocksDB, BigQuery, Flink, Beam, Kafka, Pub/Sub, GCP, Microservice."
                             ]
                         }
                     ],
-                    "<u>VCCorp</u>": [
+                    "VCCorp": [
                         {
                             "title": "Backend Engineer",
                             "location": "Hanoi, Vietnam",
                             "duration": "Jan 2019 - Dec 2020",
                             "responsibilities": [
                                 "Contributed to backend platform of the <b>Lotus Social Network</b>, designed system architecture and optimized dataflows to support product scaling..",
-                                "Build <b>Comment system</b> with complex logic: moderation, blacklist/whitelist, blocking, and reporting.",
+                                "Engineered <b>Comment system</b> with complex logic: moderation, blacklist/whitelist, blocking, and reporting.",
                                 "Build <b>Push Notification system</b> handling <b>60M events/day</b>, with peaks of <b>1M notifications in 3 minutes</b>, ensuring <b>P95 <200ms</b> for 120K daily hits.",
                                 "<b>Technical stack:</b> Java, Spring Boot, Kafka, MySQL, HBase, Aerospike, Redis, ElasticSearch, RocksDB, Spark, Docker, Microservice."
                             ]
@@ -295,7 +296,7 @@
                     {
                         "name": "GTAR",
                         "link": "https://github.com/paduvi/linux",
-                        "description": "Extract/Compress File in Linux By using TAR command line Written by Vala language with support of GTK+3.0 library."
+                        "description": "Extract/Compress File in Linux By using TAR command line written by Vala language with support of GTK+3.0 library."
                     }
                 ],
                 // "projectsIntroduction": "My projects demonstrate my ability to apply my skills and knowledge to create innovative and impactful solutions. I am passionate about leveraging technology to solve real-world problems and drive positive change.",
@@ -325,7 +326,7 @@
                 resumeData.education.forEach(edu => {
                     const eduBlock = document.createElement("div");
                     eduBlock.className = 'education-block';
-                    eduBlock.innerHTML = `<div class="education-headline"><strong>${edu.institution}</strong><span class="location">${edu.location}</span></div><div class="education-headline"><span class="degree-title">${edu.degree}</span><span class="duration">${edu.duration}<span></div><p>${edu.description}</p>`;
+                    eduBlock.innerHTML = `<div class="education-headline"><strong><u>${edu.institution}</u></strong><span class="location">${edu.location}</span></div><div class="education-headline"><span class="degree-title">${edu.degree}</span><span class="duration">${edu.duration}<span></div><p>${edu.description}</p>`;
                     educationSection.appendChild(eduBlock);
                 });
             }
@@ -368,7 +369,7 @@
                 Object.keys(resumeData.experience).forEach(company => {
                     const companyBlock = document.createElement("div");
                     companyBlock.className = "company-block";
-                    companyBlock.innerHTML = `<div class="company-name"><strong>${company}</strong><span class="location">${resumeData.experience[company][0].location}</span></div>`;
+                    companyBlock.innerHTML = `<div class="company-name"><strong><u>${company}</u></strong><span class="location">${resumeData.experience[company][0].location}</span></div>`;
                     resumeData.experience[company].forEach(job => {
                         const jobBlock = document.createElement("div");
                         jobBlock.className = "job-description";
@@ -393,6 +394,9 @@
                     projBlock.innerHTML = `<strong><a href="${project.link}" target="_blank">${project.name}</a></strong><br><p>${project.description}</p>`;
                     projectsSection.appendChild(projBlock);
                 });
+                const projectsIntroDiv = document.createElement("div");
+                projectsIntroDiv.innerHTML = `<p>More projects available at: <a href="${resumeData.contact.github}" target="_blank">${resumeData.contact.github}</a></p>`;
+                projectsSection.appendChild(projectsIntroDiv);
             }
         });
     </script>
@@ -424,14 +428,15 @@
     </div>
 
     <div class="section">
+        <h3>Education</h3>
+        <div id="education"></div>
+    </div>
+
+    <div class="section">
         <h3>Projects</h3>
         <div id="projects"></div>
     </div>
 
-    <div class="section">
-        <h3>Education</h3>
-        <div id="education"></div>
-    </div>
 </div>
 </body>
 </html>
