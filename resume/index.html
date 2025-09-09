@@ -34,7 +34,7 @@
         }
         .section {
             margin-bottom: 30px;
-            text-align: left;
+            text-align: justify;
         }
         .section h3 {
             border-bottom: 2px solid #ddd;
@@ -179,7 +179,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const resumeData = {
                 "name": "Viet Phan",
-                "title": "Software Engineer",
+                "title": "Software Engineer – Backend & Java Developer",
                 "contact": {
                     "email": "viet3695@gmail.com",
                     "linkedin": "https://www.linkedin.com/in/vietphanduc",
@@ -187,7 +187,7 @@
                     "city": "Hanoi",
                     "country": "Vietnam"
                 },
-                "introduction": "Highly skilled and innovative Software Engineer with a proven track record of designing, developing, and implementing cutting-edge solutions in embedded systems and robotics. Passionate about leveraging technology to solve complex challenges and drive impactful results.",
+                "introduction": "Software Engineer specializing in backend development and distributed systems. Experienced in building scalable, low-latency financial and marketing platforms, with additional expertise in applying AI to recommendation and multimedia systems.",
                 "education": [
                     {
                         "degree": "Bachelor of Engineering in Computer Science",
@@ -201,19 +201,18 @@
                         "institution": "<u>Chu Van An High School for the Gifted</u>",
                         "location": "Hanoi, Vietnam",
                         "duration": "2010 - 2013",
-                        "description": "<ul><li>Advanced training in Mathematics.</li><li>Achievement: First Prize in Hanoi City Mathematics Contest for Excellent Students.</li></ul>"
+                        "description": "<ul><li>Advanced training in Mathematics.</li><li>Achievement: <b>1st Prize</b> in Hanoi City Mathematics Contest for Excellent Students.</li></ul>"
                     }
                 ],
-                "educationIntroduction": "My education has provided me with a strong foundation in computer science and mathematics, with a focus on software engineering, information systems, artificial intelligence, and advanced problem-solving. I am eager to apply this knowledge and skill set to real-world challenges.",
+                //"educationIntroduction": "My education has provided me with a strong foundation in computer science and mathematics, with a focus on software engineering, information systems, artificial intelligence, and advanced problem-solving. I am eager to apply this knowledge and skill set to real-world challenges.",
                 "skills": [
-                    "Programming: Java, Golang, Python, Javascript",
-                    "Spring Boot, JavaFX, Java Swing",
-                    "Apache Spark, Apache Flink, Apache Beam",
-                    "Kafka, SQL, NoSQL, Docker, Microservice",
-                    "Pytorch, Machine Learning, Recommendation System",
-                    "Linux, Shell Scripting, Git, Google Cloud Platform"
+                    "Languages: Java, Golang, Python, JavaScript",
+                    "Frameworks & Platforms: Spring Boot, JavaFX, Java Swing, GCP",
+                    "Data & Streaming: Kafka, Spark, Flink, Beam, SQL/NoSQL, BigQuery",
+                    "ML/AI: PyTorch, Machine Learning, Recommendation Systems",
+                    "Tools: Docker, Linux, Git, Shell Scripting"
                 ],
-                "skillsIntroduction": "I possess a diverse set of technical skills, including proficiency in multiple programming languages, software development frameworks, and cloud platforms. My experience also includes databases, distributed systems, and data-driven applications.",
+                // "skillsIntroduction": "I possess a diverse set of technical skills, including proficiency in multiple programming languages, software development frameworks, and cloud platforms. My experience also includes databases, distributed systems, and data-driven applications.",
                 "experience": {
                     "<u>KASIKORN Business-Technology Group [KBTG]</u>": [
                         {
@@ -221,10 +220,9 @@
                             "location": "Vietnam - Remote",
                             "duration": "June 2023 - Present",
                             "responsibilities": [
-                                "Maintain and develop <b>Core Banking system</b> for KASIKORN Bank - KBank Vietnam.",
-                                "Maintain and develop <b>TPTeller</b> - Windows GUI Application for Teller at bank branch.",
-                                "Collaborate with external partners and integrated third-party systems such as SWIFT, NAPAS, Cardzone CMS, FIS, and Tyme to deliver secure and efficient financial solutions.",
-                                "Achieve P95 request latency of 110ms while handling peak traffic of 400 transactions per second (TPS), ensuring system stability and scalability.",
+                                "Enhanced <b>Core Banking system</b> and developed <b>TPTeller</b> (Windows GUI) for branch tellers.",
+                                "Integrated third-party systems (SWIFT, NAPAS, Cardzone CMS, FIS, Tyme) to deliver <b>secure and efficient financial solutions</b>.",
+                                "Optimized performance, achieving <b>P95 latency of 110ms</b> while handling <b>peak 400 TPS</b>, ensuring system stability and scalability.",
                                 "<b>Technical stack:</b> Java, Java Swing, Spring Framework, Javascript, Mumps, Profile GT.M, Oracle DB."
                             ]
                         }
@@ -235,11 +233,10 @@
                             "location": "Hanoi, Vietnam",
                             "duration": "Dec 2020 - May 2023",
                             "responsibilities": [
-                                "Maintain and develop <b>Marketing Technology Platform</b> for ecosystem of company: VinId, VinShop, OneHousing.",
-                                "Build <b>Dynamic Rule engine</b> for Marketing campaigns based on user behaviors.",
-                                "Responsible for system design and implementation of <b>Customer Journey Builder</b> module.",
-                                "Obtain execution latency P95 is 120ms, and capable of processing about 20K requests per second.",
-                                "<b>Technical stack:</b> Java, Golang, Spring Boot, Mysql, ElasticSearch, Redis, RocksDB, Google BigQuery, Apache Flink, Apache Beam, Apache Kafka, Google Pub/Sub, Google Cloudtask, Microservice."
+                                "Maintained and developed the <b>Marketing Technology Platform</b> for VinID, VinShop, OneHousing.",
+                                "Designed and built <b>Dynamic Rule Engine</b> and <b>Customer Journey Builder</b>, powering personalized marketing.",
+                                "Achieved <b>P95 execution latency of 120ms</b>, capable of processing <b>20K requests/second</b>.",
+                                "<b>Technical stack:</b> Java, Golang, Spring Boot, Mysql, ElasticSearch, Redis, RocksDB, BigQuery, Flink, Beam, Kafka, Pub/Sub, GCP, Microservice."
                             ]
                         }
                     ],
@@ -249,11 +246,9 @@
                             "location": "Hanoi, Vietnam",
                             "duration": "Jan 2019 - Dec 2020",
                             "responsibilities": [
-                                "Take part in Backend platform of Lotus Social Network application.",
-                                "Design system and determine the dataflow, optimize and adjust the architecture to suit the development needs of the application",
-                                "Build <b>Comment system</b> for Post and Livestream, handling complex logical process of pre-moderation, post-moderation, blacklist/whitelist users, block and report.",
-                                "Build <b>Push Notification system</b>: Capable of processing about 60M events per day, peaking up to 1M push notifications within 3 minutes.",
-                                "Make sure the P95 response time is no more than 200ms for an average of 120K Notification Tab hits per day.",
+                                "Contributed to backend platform of the <b>Lotus Social Network</b>, designed system architecture and optimized dataflows to support product scaling..",
+                                "Build <b>Comment system</b> with complex logic: moderation, blacklist/whitelist, blocking, and reporting.",
+                                "Build <b>Push Notification system</b> handling <b>60M events/day</b>, with peaks of <b>1M notifications in 3 minutes</b>, ensuring <b>P95 <200ms</b> for 120K daily hits.",
                                 "<b>Technical stack:</b> Java, Spring Boot, Kafka, MySQL, HBase, Aerospike, Redis, ElasticSearch, RocksDB, Spark, Docker, Microservice."
                             ]
                         },
@@ -262,10 +257,9 @@
                             "location": "Hanoi, Vietnam",
                             "duration": "Feb 2017 - Jan 2019",
                             "responsibilities": [
-                                "Implement <b>News recommendation system</b> for Kenh14, CafeBiz, Soha which have 100M total visits per day",
-                                "Research and apply different kind of recommendation models: contentbased model, collaborative filtering model and hybrid.",
-                                "Build an <b>API Gateway</b> for load balancing and routing user requests to the appropriate backend services. Peak up to 10K requests per second.",
-                                "Develop an <b>unsupervised document embedding model</b> using CNN network, which improved average CTR results (from 3.3% to 5.2%) compared to the original model using TF-IDF model.",
+                                "Implement <b>news recommendation system</b> for sites with <b>100M daily visits</b>, improving CTR from <b>3.3% → 5.2%</b>.",
+                                "Researched and applied recommendation models <b>content-based, collaborative filtering, hybrid</b>.",
+                                "Implemented <b>API Gateway</b> for load balancing, handling <b>10K requests/second</b>.",
                                 "<b>Technical stack:</b> Java, Python, Pytorch, Tensorflow, Golang, Redis, MySQL, Spark, Docker, Microservice, Machine Learning, Deep Learning."
                             ]
                         }
@@ -286,27 +280,7 @@
                     {
                         "name": "Unsupervised Document Embedding",
                         "link": "https://github.com/paduvi/unsupervised-document-embedding",
-                        "description": "Built an unsupervised document embedding library in Python for generating vector representations of documents, with full pipeline support from data preprocessing and vocabulary construction to training and inference."
-                    },
-                    {
-                        "name": "ParallelComputation",
-                        "link": "https://github.com/paduvi/ParallelComputation",
-                        "description": "Developed as a university coursework project, this Parallel Computation program demonstrates the implementation of classic algorithms (e.g., Boyer–Moore search, QuickSort) in Java and OpenMPI, exploring concepts of parallelism and performance optimization."
-                    },
-                    {
-                        "name": "EvolutionalProgramming",
-                        "link": "https://github.com/paduvi/EvolutionalProgramming",
-                        "description": "Developed a Java-based implementation of the NSGA-II evolutionary algorithm as a university coursework project, demonstrating multi-objective optimization techniques and algorithmic exploration in evolutionary computing."
-                    },
-                    {
-                        "name": "UniRecommender",
-                        "link": "https://github.com/paduvi/unirecommender",
-                        "description": "Developed a Javascript GUI university recommender using fuzzy search, designed as a coursework project to help students identify suitable university options based on imprecise input."
-                    },
-                    {
-                        "name": "PCA-LBP",
-                        "link": "https://github.com/paduvi/pca-dip",
-                        "description": "University coursework project on Face Recognition, comparing the performance of Principal Component Analysis (PCA) and Local Binary Patterns (LBP)."
+                        "description": "Built an unsupervised document embedding library in Python for generating vector representations of documents, with full pipeline support from data preprocessing and vocabulary construction to training and inference. This model has been applied in my graduation thesis – News Recommendation System."
                     },
                     {
                         "name": "Arrowjs",
@@ -314,39 +288,9 @@
                         "description": "High performance MVC Framework based on Express with many extra features."
                     },
                     {
-                        "name": "circlejs",
-                        "link": "https://github.com/paduvi/circlejs",
-                        "description": "Built a lightweight Node.js web framework named circlejs, providing core features for handling routing, middleware, and server-side logic to support web application development."
-                    },
-                    {
-                        "name": "TechpagoDesign",
-                        "link": "https://github.com/paduvi/techpago.design",
-                        "description": "A ReactJS UI Kit library providing reusable components such as Loading Screen, NotFound Screen, Markdown Editor, and Rich Text Editor, enabling faster and more consistent frontend development."
-                    },
-                    {
-                        "name": "Node WiringPi",
-                        "link": "https://github.com/paduvi/node-wiringPi",
-                        "description": "Node.js bindings to wiringPi - GPIO Library for the Raspberry Pi."
-                    },
-                    {
-                        "name": "TreeApp",
-                        "link": "https://github.com/paduvi/TreeApp",
-                        "description": "Developed TreeApp, a university-level advanced programming project in Java focused on implementing and visualizing complex tree data structures."
-                    },
-                    {
-                        "name": "Basic 2D Games",
-                        "link": "https://github.com/paduvi/Basic2DGame",
-                        "description": "Developed a simple 2D game in Java as a side project to practice object-oriented programming and game development fundamentals."
-                    },
-                    {
                         "name": "2048Solver",
                         "link": "https://github.com/paduvi/2048-ai-assignment",
                         "description": "University coursework project implementing an AI agent to play the 2048 game, exploring search-based strategies such as A* (or Minimax/Expectimax) to compare performance and heuristics in a classic puzzle environment."
-                    },
-                    {
-                        "name": "Wheel of Fortune",
-                        "link": "https://github.com/paduvi/OOP_Wheel-of-fortune",
-                        "description": "Developed a Wheel of Fortune game in Java as a major Object-Oriented Programming assignment, reinforcing principles of inheritance, encapsulation, and interactive UI design."
                     },
                     {
                         "name": "GTAR",
@@ -470,13 +414,13 @@
     </div>
 
     <div class="section">
-        <h3>Experience</h3>
-        <div id="experience"></div>
+        <h3>Skills & Technologies</h3>
+        <div id="skills"></div>
     </div>
 
     <div class="section">
-        <h3>Education</h3>
-        <div id="education"></div>
+        <h3>Experience</h3>
+        <div id="experience"></div>
     </div>
 
     <div class="section">
@@ -485,8 +429,8 @@
     </div>
 
     <div class="section">
-        <h3>Additional</h3>
-        <div id="skills"></div>
+        <h3>Education</h3>
+        <div id="education"></div>
     </div>
 </div>
 </body>
