@@ -101,7 +101,7 @@
         }
         #projects .project-block {
             margin-bottom: 25px;
-            padding: 15px;
+            padding: 15px 15px 4px 15px;
             background-color: #f9f9f9;
             border-radius: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
@@ -194,14 +194,14 @@
                         "institution": "<u>Hanoi University of Science and Technology</u>",
                         "location": "Hanoi, Vietnam",
                         "duration": "2013 - 2018",
-                        "description": "<li>Gained expertise in software engineering, information systems, and artificial intelligence, with application tracks in Software Technology, Information Systems, and Intelligent Data Analytics.</li><li>Graduation Thesis: Applying Deep Learning in building news recommendation system.</li>"
+                        "description": "<ul><li>Gained expertise in software engineering, information systems, and artificial intelligence, with application tracks in Software Technology, Information Systems, and Intelligent Data Analytics.</li><li>Graduation Thesis: Applying Deep Learning in building news recommendation system.</li></ul>"
                     },
                     {
                         "degree": "Specialized in Mathematics",
                         "institution": "<u>Chu Van An High School for the Gifted</u>",
                         "location": "Hanoi, Vietnam",
                         "duration": "2010 - 2013",
-                        "description": "<li>Advanced training in Mathematics.</li><li>Achievement: First Prize in Hanoi City Mathematics Contest for Excellent Students.</li>"
+                        "description": "<ul><li>Advanced training in Mathematics.</li><li>Achievement: First Prize in Hanoi City Mathematics Contest for Excellent Students.</li></ul>"
                     }
                 ],
                 "educationIntroduction": "My education has provided me with a strong foundation in computer science and mathematics, with a focus on software engineering, information systems, artificial intelligence, and advanced problem-solving. I am eager to apply this knowledge and skill set to real-world challenges.",
@@ -394,10 +394,14 @@
                 skillsSection.parentElement.insertBefore(skillsIntroDiv, skillsSection);
             }
             if (resumeData.skills) {
-                skillsSection.innerHTML = ''; // Clear the existing content
+                // Clear and create a new ul
+                skillsSection.innerHTML = '';
+                const ul = document.createElement("ul");
+                skillsSection.appendChild(ul);
+
                 resumeData.skills.forEach(skill => {
-                    const skillItem = document.createElement("p");
-                    skillItem.style.marginBottom = '10px';
+                    const skillItem = document.createElement("li");
+                    // skillItem.style.marginBottom = '10px';
                     const parts = skill.split(':');
                     if (parts.length === 2) {
                         skillItem.innerHTML = `<strong>${parts[0].trim()}:</strong> ${parts[1].trim()}`;
@@ -405,7 +409,7 @@
                         skillItem.textContent = skill;
                     }
 
-                    skillsSection.appendChild(skillItem);
+                    ul.appendChild(skillItem);
                 });
             }
 
@@ -466,13 +470,13 @@
     </div>
 
     <div class="section">
-        <h3>Education</h3>
-        <div id="education"></div>
+        <h3>Experience</h3>
+        <div id="experience"></div>
     </div>
 
     <div class="section">
-        <h3>Experience</h3>
-        <div id="experience"></div>
+        <h3>Education</h3>
+        <div id="education"></div>
     </div>
 
     <div class="section">
