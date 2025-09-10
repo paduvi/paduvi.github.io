@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineer Resume</title>
+    <title>Software Engineer Resume</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
@@ -312,6 +312,8 @@
                 ],
                 // "projectsIntroduction": "My projects demonstrate my ability to apply my skills and knowledge to create innovative and impactful solutions. I am passionate about leveraging technology to solve real-world problems and drive positive change.",
             };
+
+            document.title = resumeData.name + " - " + document.title;
 
             document.getElementById("name").innerText = resumeData.name;
             document.getElementById("title").innerText = resumeData.title + " | " + resumeData.contact.city + ", " + resumeData.contact.country;
