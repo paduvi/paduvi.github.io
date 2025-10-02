@@ -51,20 +51,47 @@
         ul li {
             margin-bottom: 10px;
         }
-        .social-icons {
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #aaa;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 20px;
+            /*background: #222;*/
+            /*color: white;*/
+            padding: 6px 0 6px 6px;
+            border-radius: 4px;
+            width: 28px;
+            height: 28px;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
+            align-items: center;
         }
-        .social-icons a {
-            font-size: 20px;
-            color: #555;
-            text-decoration: none;
+
+        .contact-item a {
+            text-decoration: underline;
+            color: #000;
+            font-weight: 500;
+            padding: 6px 6px 6px 0;
         }
-        .social-icons a:hover {
+
+        .contact-item a:hover {
             color: #0078d7;
         }
+
         #experience .company-block {
             margin-top: 15px;
             position: relative;
@@ -199,15 +226,16 @@
                 "title": "Software Engineer – Backend & Java Developer",
                 "contact": {
                     "email": "viet3695@gmail.com",
-                    "linkedin": "https://www.linkedin.com/in/vietphanduc",
-                    "github": "https://github.com/paduvi",
+                    "phone": "(+84) 985 797 649",
+                    "linkedin": "vietphanduc",
+                    "github": "paduvi",
                     "city": "Hanoi",
                     "country": "Vietnam"
                 },
                 "introduction": "Software Engineer specializing in backend development and distributed systems. Experienced in building scalable, low-latency financial and marketing platforms, with additional expertise in applying AI to recommendation and multimedia systems.",
                 "education": [
                     {
-                        "degree": "Bachelor of Engineering in Computer Science",
+                        "degree": "Bachelor of Engineering in Computer Science | Elitech Engineering Program (Honors Program)",
                         "institution": "Hanoi University of Science and Technology",
                         "location": "Hanoi, Vietnam",
                         "duration": "2013 - 2018",
@@ -317,9 +345,14 @@
 
             document.getElementById("name").innerText = resumeData.name;
             document.getElementById("title").innerText = resumeData.title + " | " + resumeData.contact.city + ", " + resumeData.contact.country;
+            document.getElementById("phone").innerText = resumeData.contact.phone;
+            document.getElementById("phone").href = `tel:+${resumeData.contact.phone.replace(/\D/g, '')}`;
+            document.getElementById("email").innerText = resumeData.contact.email;
             document.getElementById("email").href = `mailto:${resumeData.contact.email}`;
-            document.getElementById("linkedin").href = resumeData.contact.linkedin;
-            document.getElementById("github").href = resumeData.contact.github;
+            document.getElementById("linkedin").innerText = resumeData.contact.linkedin;
+            document.getElementById("linkedin").href = "https://www.linkedin.com/in/" + resumeData.contact.linkedin;
+            document.getElementById("github").innerText = resumeData.contact.github;
+            document.getElementById("github").href = "https://github.com/" + resumeData.contact.github;
 
             const introductionSection = document.getElementById("introduction");
             if (resumeData.introduction) {
@@ -408,7 +441,7 @@
                     projectsSection.appendChild(projBlock);
                 });
                 const projectsIntroDiv = document.createElement("div");
-                projectsIntroDiv.innerHTML = `<p>More projects available at: <a href="${resumeData.contact.github}" target="_blank">${resumeData.contact.github}</a></p>`;
+                projectsIntroDiv.innerHTML = `<p>More projects available at: <a style="color: #000000" href="https://github.com/${resumeData.contact.github}" target="_blank">https://github.com/${resumeData.contact.github}</a></p>`;
                 projectsSection.appendChild(projectsIntroDiv);
             }
         });
@@ -419,11 +452,29 @@
     <header>
         <h1 id="name"></h1>
         <p id="title"></p>
-        <div class="social-icons">
-            <a id="email"><i class="fas fa-envelope"></i></a>
-            <a id="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a id="github" target="_blank"><i class="fab fa-github"></i></a>
+        <div class="contact">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a id="phone"></a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a id="email"></a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a id="linkedin" target="_blank"></a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a id="github" target="_blank"></a>
+            </div>
         </div>
+<!--        <div class="social-icons">-->
+<!--            <a id="email"><i class="fas fa-envelope"></i></a>-->
+<!--            <a id="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>-->
+<!--            <a id="github" target="_blank"><i class="fab fa-github"></i></a>-->
+<!--        </div>-->
     </header>
 
     <div class="section" id="introduction">
