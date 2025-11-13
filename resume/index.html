@@ -23,6 +23,7 @@
         h1 {
             margin-bottom: 10px;
             color: #222;
+            font-size: 1.8rem; /* Adjustable for better visibility on smaller screens */
         }
         h3 {
             color: #444;
@@ -31,6 +32,23 @@
             border-bottom: 2px solid #ddd;
             padding-bottom: 5px;
             text-transform: uppercase;
+            font-size: 1rem; /* Adjust size for better scaling */
+        }
+        #title {
+            font-size: 1rem;
+            color: #444;
+            text-align: center;
+            line-height: 1.4em;
+            display: inline-block;
+            word-wrap: break-word; /* Allows breaking text to a new line */
+            max-width: 100%;
+        }
+        .separator {
+            margin: 0 5px; /* Add spacing around the pipe character */
+        }
+        .location {
+            display: inline; /* Default inline display */
+            white-space: nowrap; /* Prevent breaking city and country onto separate lines */
         }
         .section {
             margin-bottom: 30px;
@@ -42,7 +60,6 @@
             color: #333;
         }
         ul {
-            /*list-style: none;*/
             padding-left: 20px;
             line-height: 1.6;
             margin-top: 10px;
@@ -53,8 +70,10 @@
         }
         .contact {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap; /* Enable wrapping on smaller screens */
+            justify-content: center; /* Center content for responsiveness */
             align-items: center;
+            gap: 10px; /* Add gap for better spacing */
             border-top: 1px solid #aaa;
             border-bottom: 1px solid #aaa;
             padding: 10px 0;
@@ -64,16 +83,14 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 8px;
             font-size: 1rem;
+            text-align: center;
         }
 
         .contact-item i {
             font-size: 20px;
-            /*background: #222;*/
-            /*color: white;*/
-            padding: 6px 0 6px 6px;
-            border-radius: 4px;
+            padding: 6px;
             width: 28px;
             height: 28px;
             display: flex;
@@ -85,7 +102,6 @@
             text-decoration: underline;
             color: #000;
             font-weight: 500;
-            padding: 6px 6px 6px 0;
         }
 
         .contact-item a:hover {
@@ -112,6 +128,7 @@
             font-style: italic;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
         }
         #experience strong {
             text-transform: uppercase;
@@ -141,7 +158,7 @@
         #projects .project-block a:hover {
             text-decoration: underline;
         }
-        .section .introduction{
+        .section .introduction {
             margin-bottom: 20px;
             font-size: 1.1em;
             color: #666;
@@ -169,6 +186,72 @@
             font-style: italic;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                width: 100%; /* Adjust for better scaling on tablets */
+                padding: 15px; /* Reduced padding for smaller screens */
+            }
+            h1 {
+                font-size: 1.5rem; /* Reduced size for smaller screens */
+            }
+            h3 {
+                font-size: 0.9rem;
+            }
+            ul {
+                padding-left: 15px;
+                font-size: 0.9rem;
+            }
+            #title {
+                font-size: 0.9rem; /* Reduce font size for smaller screens */
+            }
+            .contact {
+                flex-direction: column; /* Stack contact items on top of each other */
+                gap: 8px;
+            }
+            .contact-item a {
+                font-size: 0.9rem;
+            }
+            #projects .project-block {
+                padding: 10px; /* Reduce padding for project sections */
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                width: 100%; /* Adjust container to take full width */
+                padding: 10px; /* Smaller padding for mobile */
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            h3 {
+                font-size: 0.8rem;
+            }
+            ul li {
+                font-size: 0.8rem;
+            }
+            .separator {
+                display: none;
+            }
+            .location {
+                display: block; /* Force city + country onto a new line */
+            }
+            .contact-item {
+                font-size: 0.8rem;
+                gap: 5px;
+            }
+            .contact-item i {
+                font-size: 16px;
+            }
+            .section h3 {
+                font-size: 0.9rem;
+            }
+        }
+
         @media print {
             body {
                 background-color: white;
@@ -185,14 +268,34 @@
             h3 {
                 font-size: 12pt;
             }
-            .social-icons {
-                /* display: none; */  /* Keep social icons in print view */
+            #title {
+                font-size: 9pt;
+                line-height: normal;
             }
-            .section h3 {
-                border-bottom: 2px solid #000;
+            .contact {
+                display: flex; /* Ensure inline display for all contact items */
+                flex-direction: row; /* Explicitly set row direction */
+                flex-wrap: nowrap; /* Prevent items from wrapping */
+                justify-content: space-around; /* Align items at the start */
+                align-items: center; /* Center-align items vertically */
+                gap: 15px; /* Consistent spacing between contact items */
+                padding: 0;
+                margin: 0;
             }
-            .introduction {
-                font-size: 10pt;
+            .contact-item {
+                font-size: 9pt; /* Optimize for print readability */
+                display: flex; /* Ensure icon and text are inline */
+                flex-direction: row; /* Make icon and text align in a row */
+                align-items: center; /* Center-align the icon with the text */
+                gap: 6px; /* Adjust gap between icon and text */
+                white-space: nowrap; /* Prevent contact items from breaking */
+            }
+            .contact-item i {
+                font-size: 10pt; /* Scale icon size for print */
+            }
+            .contact-item a {
+                text-decoration: none; /* Avoid underlines */
+                color: #000; /* Standard black text for links during print */
             }
             ul, .job-description {
                 font-size: 9pt;
@@ -213,9 +316,6 @@
                 background-color: transparent;
                 padding: 0;
                 box-shadow: none;
-            }
-            .location {
-                font-style: italic;
             }
         }
     </style>
@@ -345,7 +445,10 @@
             document.title = resumeData.name + " - " + document.title;
 
             document.getElementById("name").innerText = resumeData.name;
-            document.getElementById("title").innerText = resumeData.title + " | " + resumeData.contact.city + ", " + resumeData.contact.country;
+            document.getElementById("title").innerHTML = `
+                ${resumeData.title} <span class="separator">|</span>
+                <span class="location">${resumeData.contact.city}, ${resumeData.contact.country}</span>
+            `;
             if (resumeData.contact.phone) {
                 document.getElementById("phone").innerText = resumeData.contact.phone;
                 document.getElementById("phone").href = `tel:+${resumeData.contact.phone.replace(/\D/g, '')}`;
@@ -489,12 +592,12 @@
                 <a id="email"></a>
             </div>
             <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <a id="github" target="_blank"></a>
-            </div>
-            <div class="contact-item">
                 <i class="fa-solid fa-globe"></i>
                 <a id="blog" target="_blank"></a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a id="github" target="_blank"></a>
             </div>
         </div>
 <!--        <div class="social-icons">-->
