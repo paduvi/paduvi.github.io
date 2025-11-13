@@ -226,9 +226,10 @@
                 "title": "Software Engineer – Backend & Java Developer",
                 "contact": {
                     "email": "viet3695@gmail.com",
-                    "phone": "(+84) 985 797 649",
+                    // "phone": "(+84) 985 797 649",
                     "linkedin": "vietphanduc",
                     "github": "paduvi",
+                    "blog": "blog.dogy.io",
                     "city": "Hanoi",
                     "country": "Vietnam"
                 },
@@ -345,14 +346,36 @@
 
             document.getElementById("name").innerText = resumeData.name;
             document.getElementById("title").innerText = resumeData.title + " | " + resumeData.contact.city + ", " + resumeData.contact.country;
-            document.getElementById("phone").innerText = resumeData.contact.phone;
-            document.getElementById("phone").href = `tel:+${resumeData.contact.phone.replace(/\D/g, '')}`;
-            document.getElementById("email").innerText = resumeData.contact.email;
-            document.getElementById("email").href = `mailto:${resumeData.contact.email}`;
-            document.getElementById("linkedin").innerText = resumeData.contact.linkedin;
-            document.getElementById("linkedin").href = "https://www.linkedin.com/in/" + resumeData.contact.linkedin;
-            document.getElementById("github").innerText = resumeData.contact.github;
-            document.getElementById("github").href = "https://github.com/" + resumeData.contact.github;
+            if (resumeData.contact.phone) {
+                document.getElementById("phone").innerText = resumeData.contact.phone;
+                document.getElementById("phone").href = `tel:+${resumeData.contact.phone.replace(/\D/g, '')}`;
+            } else {
+                document.getElementById("phone").parentElement.style.display = "none";
+            }
+            if (resumeData.contact.email) {
+                document.getElementById("email").innerText = resumeData.contact.email;
+                document.getElementById("email").href = `mailto:${resumeData.contact.email}`;
+            } else {
+                document.getElementById("email").parentElement.style.display = "none";
+            }
+            if (resumeData.contact.linkedin) {
+                document.getElementById("linkedin").innerText = resumeData.contact.linkedin;
+                document.getElementById("linkedin").href = "https://www.linkedin.com/in/" + resumeData.contact.linkedin;
+            } else {
+                document.getElementById("linkedin").parentElement.style.display = "none";
+            }
+            if (resumeData.contact.github) {
+                document.getElementById("github").innerText = resumeData.contact.github;
+                document.getElementById("github").href = "https://github.com/" + resumeData.contact.github;
+            } else {
+                document.getElementById("github").parentElement.style.display = "none";
+            }
+            if (resumeData.contact.blog) {
+                document.getElementById("blog").innerText = resumeData.contact.blog;
+                document.getElementById("blog").href = "https://" + resumeData.contact.blog;
+            } else {
+                document.getElementById("blog").parentElement.style.display = "none";
+            }
 
             const introductionSection = document.getElementById("introduction");
             if (resumeData.introduction) {
@@ -458,16 +481,20 @@
                 <a id="phone"></a>
             </div>
             <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a id="email"></a>
-            </div>
-            <div class="contact-item">
                 <i class="fab fa-linkedin"></i>
                 <a id="linkedin" target="_blank"></a>
             </div>
             <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a id="email"></a>
+            </div>
+            <div class="contact-item">
                 <i class="fab fa-github"></i>
                 <a id="github" target="_blank"></a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-globe"></i>
+                <a id="blog" target="_blank"></a>
             </div>
         </div>
 <!--        <div class="social-icons">-->
