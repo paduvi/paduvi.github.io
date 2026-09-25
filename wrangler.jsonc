@@ -1,0 +1,13 @@
+{
+  "name": "resume",
+  "compatibility_date": "2026-09-01",
+  // Static-assets-only Worker: serves just the resume/ folder
+  "assets": {
+    "directory": "./resume",
+    "not_found_handling": "404-page"
+  },
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "resume.dogy.io", "custom_domain": true }
+  ]
+}
